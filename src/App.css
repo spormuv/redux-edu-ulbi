@@ -1,0 +1,24 @@
+.app {
+  width: 50%;
+  height: 100vh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  width: 120px;
+  padding: 10px;
+  margin: 15px;
+  border-radius: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  background-color: rgb(80, 200, 230);
+}
+
+.clients {
+  margin-top: 1rem;
+  font-size: 24px;
+}

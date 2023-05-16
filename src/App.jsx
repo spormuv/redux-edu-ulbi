@@ -3,7 +3,10 @@ import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import { fetchCustomers } from './asyncActions/customers';
-import { addCustomerAction, delCustomerAction } from './store/customerReducer';
+import {
+  addCustomerAction,
+  removeCustomerAction,
+} from './store/customerReducer';
 
 function App() {
   const dispatch = useDispatch();
@@ -27,7 +30,7 @@ function App() {
   };
 
   const removeCustomer = (customer) => {
-    dispatch(delCustomerAction(customer));
+    dispatch(removeCustomerAction(customer));
   };
 
   return (
@@ -35,10 +38,10 @@ function App() {
       <div style={{ fontSize: '40px' }}>Balance: {cash}</div>
 
       <div>
-        <button onClick={() => addCash(+prompt('Add Cash', '20'))}>
-          Top Up
+        <button onClick={() => addCash(+prompt('Deposit Cash', '50'))}>
+          Deposit
         </button>
-        <button onClick={() => getCash(+prompt('Withdraw Cash', '20'))}>
+        <button onClick={() => getCash(+prompt('Withdraw Cash', '50'))}>
           Withdraw
         </button>
       </div>
@@ -47,19 +50,18 @@ function App() {
         <button onClick={() => addCustomer(prompt('Add Client'))}>
           Add Client
         </button>
-        <button onClick={() => getCash(+prompt('Withdraw Cash', '20'))}>
-          Del Client
-        </button>
-      </div>
-
-      <div>
         <button onClick={() => dispatch(fetchCustomers())}>DB Clients</button>
       </div>
+
       <div className="clients">
         {!!customers.length ? (
           <div>
             {customers.map((customer) => (
-              <div key={customer.id} onClick={() => removeCustomer(customer)}>
+              <div
+                className="customer"
+                key={customer.id}
+                onClick={() => removeCustomer(customer)}
+              >
                 {customer.name}
               </div>
             ))}

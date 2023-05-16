@@ -22,3 +22,12 @@ button {
   margin-top: 1rem;
   font-size: 24px;
 }
+
+.customer {
+  width: 250px;
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  cursor: grab;
+}
